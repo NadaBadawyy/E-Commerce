@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.row{
+    @apply flex flex-wrap py-5 ;
+}
+.container{
+    @apply  p-8
+}
+.btn{
+    @apply w-full p-2 rounded-xl bg-[#0AAD0A]  text-white font-bold  
+}
+html{
+    background-image: url('./assets/back.svg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100%;
+
+}
