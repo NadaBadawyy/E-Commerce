@@ -4,7 +4,9 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import { OrderContext } from "../../Context/OrderContext";
 import { CartContext } from "../../Context/CartContext";
+import { useNavigate } from "react-router-dom";
 export default function Checkout() {
+  let navigate =useNavigate()
   let { CartId } = useContext(CartContext);
   let { checkout,loading } = useContext(OrderContext);
   let checkoutValidation = yup.object().shape({
@@ -25,7 +27,8 @@ export default function Checkout() {
       phone: "",
     },
     validationSchema: checkoutValidation,
-    onSubmit: () => checkoutfunc(CartId, "https://nadabadawy-ecommerce.vercel.app/#"),
+    onSubmit: () => {checkoutfunc(CartId, "https://nadabadawy-ecommerce.vercel.app").then(()=>navigate('/'))
+    },
   });
   async function checkoutfunc(cId, url) {
     let {data}= await checkout(cId, url, formik.values);
