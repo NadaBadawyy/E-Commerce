@@ -27,8 +27,8 @@ export default function Checkout() {
       phone: "",
     },
     validationSchema: checkoutValidation,
-    onSubmit: () => {checkoutfunc(CartId, "https://nadabadawy-ecommerce.vercel.app").then(()=>navigate('/'))
-    },
+    onSubmit: () => checkoutfunc(CartId, "https://nadabadawy-ecommerce.vercel.app/129")
+    
   });
   async function checkoutfunc(cId, url) {
     let {data}= await checkout(cId, url, formik.values);
