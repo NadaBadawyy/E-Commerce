@@ -9,7 +9,7 @@ export default function Layout() {
     <>
     <div  >
     <Nav/>
-      <div className=" p-1 md:container py-5 my-5 m-auto text-center font-mono min-h-[80vh]">
+      <div className=" p-1 md:container py-5 my-5 m-auto text-center font-mono min-h-[85vh]">
         <Outlet />
       </div>
     </div>
