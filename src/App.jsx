@@ -3,7 +3,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import { ToastContainer } from 'react-toastify';
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, createHashRouter, RouterProvider } from "react-router-dom";
 import Layout from "./Components/Layout/Layout";
 import Home from "./Components/Home/Home";
 import Brands from "./Components/Brands/Brands";
@@ -39,7 +39,7 @@ function App() {
   const [count, setCount] = useState(0);
 
   let query = new QueryClient();
-  let routes = createBrowserRouter([
+  let routes = createHashRouter([
     {
       path: "",
       element: <Layout />,

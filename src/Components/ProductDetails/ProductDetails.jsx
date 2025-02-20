@@ -139,7 +139,7 @@ let {addProduct,noItems,setnoItems}=useContext(CartContext);
   {products?.map((p) => {
           return (
             <div
-              className=" w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 text-left "
+              className="w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 text-left "
               key={p.id}
             >
               <div className=" hover:border-2 hover:shadow-md border-[#0AAD0A] rounded-lg group p-5">
