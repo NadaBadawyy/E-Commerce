@@ -169,7 +169,7 @@ export default function Products() {
           );
         })}
       </div>
-      <div className="flex overflow-x-auto sm:justify-center items-center" id="pg">
+      <div className="flex  items-center justify-center " id="pg">
         <Pagination
           currentPage={currentPage}
           totalPages={2}
