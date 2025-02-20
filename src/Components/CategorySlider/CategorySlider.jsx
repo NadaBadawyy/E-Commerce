@@ -12,7 +12,7 @@ export default function CategorySlider() {
     slidesToShow: 6,
     slidesToScroll: 1,
     autoplay:true,
-    autoplaySpeed:1000,
+    autoplaySpeed:3000,
     arrows:false,
     responsive: [
       {
