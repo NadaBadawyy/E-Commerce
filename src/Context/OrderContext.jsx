@@ -17,17 +17,33 @@ export default function OrderContextProvider(props){
             
         },headers).then((res)=>{
             setloading(false);
-            console.log(res);
+            
             
             return res
         }).catch((res)=>{
             setloading(false)
-            console.log(res);
+            
             return res;
             
         })
     }
-    return <OrderContext.Provider value={{checkout,loading}}>
+    function cashCheckout(cartId, data){
+        setloading(true);
+        return axios.post(`https://ecommerce.routemisr.com/api/v1/orders/${cartId}`,{
+            shippingAddress:data
+            
+        },headers).then((res)=>{
+            setloading(false);
+            
+            return res
+        }).catch((res)=>{
+            setloading(false)
+            
+            return res;
+            
+        })
+    }
+    return <OrderContext.Provider value={{checkout,loading,cashCheckout}}>
         {props.children}
     </OrderContext.Provider>
 }

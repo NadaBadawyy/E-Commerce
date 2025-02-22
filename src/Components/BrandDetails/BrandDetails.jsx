@@ -1,88 +1,90 @@
-import React, { useContext, useEffect, useState } from 'react'
-import style from './BrandDetails.module.css'
-import useProducts from '../../Hooks/useProducts'
-import { Link, useParams } from 'react-router-dom';
-import { CartContext } from '../../Context/CartContext';
-import { WishlistContext } from '../../Context/WishlistContext';
+import React, { useContext, useEffect, useState } from "react";
+import style from "./BrandDetails.module.css";
+import useProducts from "../../Hooks/useProducts";
+import { Link, useParams } from "react-router-dom";
+import { CartContext } from "../../Context/CartContext";
+import { WishlistContext } from "../../Context/WishlistContext";
 import { toast } from "react-toastify";
 export default function BrandDetails() {
-    const [products, setproducts] = useState(null);
-  let { getSpecificBrandProducts}=useProducts();
-  let {brand,id}=useParams();
-  async function getbrands(){
-    let res= await getSpecificBrandProducts(brand)
+  const [products, setproducts] = useState(null);
+  let { getSpecificBrandProducts } = useProducts();
+  let { brand, id } = useParams();
+  async function getbrands() {
+    let res = await getSpecificBrandProducts(brand);
     setproducts(res);
-    
   }
   const [loading, setloading] = useState(false);
   const [currId, setcurrId] = useState(0);
 
   let { addProduct, noItems, setnoItems } = useContext(CartContext);
-  let { addToWishlist,getWishList,removeWishlist,setfavCount,favCount} = useContext(WishlistContext);
-    const [favItems, setfavItems] = useState(()=>JSON.parse(localStorage.getItem('favItems')))
+  let { addToWishlist, getWishList, removeWishlist, setfavCount, favCount } =
+    useContext(WishlistContext);
+  const [favItems, setfavItems] = useState(() =>
+    JSON.parse(localStorage.getItem("favItems"))
+  );
   async function addtoCart(id) {
     setcurrId(id);
     setloading(true);
     let res = await addProduct(id);
     if (res.data.status == "success") {
       setloading(false);
-      (noItems==res.data.numOfCartItems)?toast.success('the item is already added to your cart' + "!",{position:'bottom-left'}):toast.success(res.data.message + "!",{position:'bottom-left'});
-      setnoItems(res.data.numOfCartItems); 
-      
+      noItems == res.data.numOfCartItems
+        ? toast.success("the item is already added to your cart" + "!", {
+            position: "bottom-left",
+          })
+        : toast.success(res.data.message + "!", { position: "bottom-left" });
+      setnoItems(res.data.numOfCartItems);
     } else {
       setloading(false);
-      toast.error(res.data.message + "!",{position:'bottom-left'});
+      toast.error(res.data.message + "!", { position: "bottom-left" });
     }
   }
   async function addFav(id) {
     let res = await addToWishlist(id);
-    if (res.data.status == "success") {      
+    if (res.data.status == "success") {
       setfavItems(res.data.data);
       setfavCount(res.data.data.length);
 
-      localStorage.setItem('favItems',JSON.stringify(res.data.data));
-      toast.success(res.data.message + "!",{position:'bottom-left'});
+      localStorage.setItem("favItems", JSON.stringify(res.data.data));
+      toast.success(res.data.message + "!", { position: "bottom-left" });
     } else {
-      toast.error(res.data.message + "!",{position:'bottom-left'});
+      toast.error(res.data.message + "!", { position: "bottom-left" });
     }
   }
-  async function getFavItems(){
-    let res=await getWishList();
-    if (res.data.status == "success"){
-    let fav=res.data.data.map((i)=>i.id)
-    setfavItems(fav);
-    setfavCount(res.data.count);
-    
-    localStorage.setItem('favItems',JSON.stringify(fav));
+  async function getFavItems() {
+    let res = await getWishList();
+    if (res.data.status == "success") {
+      let fav = res.data.data.map((i) => i.id);
+      setfavItems(fav);
+      setfavCount(res.data.count);
+
+      localStorage.setItem("favItems", JSON.stringify(fav));
     }
-    
-    
   }
-  async function deleteFav(id){
-    let res=await removeWishlist(id);
-    if (res.data.status == "success"){
+  async function deleteFav(id) {
+    let res = await removeWishlist(id);
+    if (res.data.status == "success") {
       setfavItems(res.data.data);
-      setfavCount(res.data.data.length)
-      
-      
-      localStorage.setItem('favItems',JSON.stringify(res.data.data));
-     
-      
-      toast.success('product is removed successfully from Wishlist' + "!",{position:'bottom-left'})
+      setfavCount(res.data.data.length);
+
+      localStorage.setItem("favItems", JSON.stringify(res.data.data));
+
+      toast.success("product is removed successfully from Wishlist" + "!", {
+        position: "bottom-left",
+      });
     }
-   
   }
-  
+
   useEffect(() => {
     getFavItems();
   }, [favCount]);
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     getbrands();
-  },[])
+  }, []);
   return (
     <>
-    {products ? (
+      {products ? (
         <>
           <h2 className="capitalize text-2xl mt-10 text-left font-bold font-mono">
             {brand}:
@@ -117,14 +119,12 @@ export default function BrandDetails() {
                                       : addFav(p.id);
                                   }
                                 }}
-                                className="fav-icon absolute top-0 right-0 hover:text-[#0AAD0A] flex justify-center items-center bg-white p-2 rounded-full"
+                                className="fav-icon absolute top-0 right-0 hover:text-[#0AAD0A] dark:hover:text-[#0AAD0A] flex justify-center items-center bg-white dark:bg-gray-700 p-2 rounded-full"
                               >
                                 {favItems?.includes(p.id) ? (
-                                  <i
-                                    class={`fa-solid fa-heart text-xl text-[#0AAD0A]`}
-                                  ></i>
+                                  <i className="fa-solid fa-heart text-xl text-[#0AAD0A] dark:text-[#0AAD0A]"></i>
                                 ) : (
-                                  <i class="fa-regular fa-heart text-xl"></i>
+                                  <i className="fa-regular fa-heart text-xl dark:text-white"></i>
                                 )}
                               </div>
                               <img
@@ -141,10 +141,10 @@ export default function BrandDetails() {
                               {p.title.split(" ").slice(0, 2).join(" ")}
                             </h3>
                             <div className="flex justify-between py-2">
-                              <p className="text-slate-600 text-base">
+                              <p className="text-slate-600 text-base dark:text-white">
                                 {p.price} EGP
                               </p>
-                              <p className="text-slate-600 text-base">
+                              <p className="text-slate-600 text-base dark:text-white">
                                 {" "}
                                 <i className="fas fa-star text-yellow-300"></i>{" "}
                                 {p.ratingsAverage}{" "}
@@ -172,7 +172,7 @@ export default function BrandDetails() {
               })
             ) : (
               <>
-                <p className="text-center text-3xl capitalize m-auto my-10">
+                <p className="text-center text-3xl capitalize m-auto my-10 dark:text-white">
                   no stock available
                   <i className="fa-regular fa-face-frown"></i>
                 </p>
@@ -188,5 +188,5 @@ export default function BrandDetails() {
         </div>
       )}
     </>
-  )
+  );
 }

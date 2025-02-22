@@ -97,87 +97,91 @@ export default function Products() {
   }
   return (
     <>
-      <h2 className="text-center md:text-left  text-3xl mt-16 ">
-        Frequently Bought Products
-      </h2>
-      <div className="row  py-2  ">
-        {data?.map((p) => {
-          return (
-            <div
-              className="w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 text-left "
-              key={p.id}
-            >
-              <div className=" hover:border-2 hover:shadow-md border-[#0AAD0A] rounded-lg group p-5">
-                <Link
-                  to={`/productdetails/${p.id}/${p.category.name}`}
+     <h2 className="text-center md:text-left text-2xl md:text-3xl mt-16 dark:text-white">
+  Frequently Bought Products
+</h2>
+<div className="row py-2">
+  {data?.map((p) => {
+    return (
+      <div
+        className="w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 text-left"
+        key={p.id}
+      >
+        <div className="hover:border-2 hover:shadow-md border-[#0AAD0A] dark:border-[#0AAD0A] rounded-lg group p-5 dark:bg-[#030119] dark:hover:shadow-lg">
+          <Link
+            to={`/productdetails/${p.id}/${p.category.name}`}
+            onClick={(e) => {
+              if (e.target.closest(".fav-icon")) {
+                e.preventDefault();
+              }
+            }}
+          >
+            <div className="product">
+              <div className="relative">
+                <div
                   onClick={(e) => {
-                    if (e.target.closest(".fav-icon")) {
-                      e.preventDefault();
-                    }
+                    e.preventDefault();
+                    {favItems?.includes(p.id) ? deleteFav(p.id) : addFav(p.id)}
                   }}
+                  className="fav-icon absolute top-0 right-0 hover:text-[#0AAD0A] dark:hover:text-[#0AAD0A] flex justify-center items-center bg-white dark:bg-gray-700 p-2 rounded-full"
                 >
-                  <div className=" product  ">
-                    <div className="relative">
-                      <div
-                        onClick={(e) => {
-                          e.preventDefault();
-                          {favItems?.includes(p.id)?deleteFav(p.id):addFav(p.id)}
-                        }}
-                        className="fav-icon absolute top-0 right-0 hover:text-[#0AAD0A] flex justify-center items-center bg-white p-2 rounded-full"
-                      >
-                        {(favItems?.includes(p.id))?<i class={`fa-solid fa-heart text-xl text-[#0AAD0A]`} ></i>:<i class="fa-regular fa-heart text-xl"></i>}
-                        
-                       
-                      </div>
-                      <img
-                        src={p.imageCover}
-                        className="w-full rounded-lg "
-                        alt=""
-                      />
-                    </div>
-
-                    <h3 className="text-[#0AAD0A] text-2xl">
-                      {p.category.name}
-                    </h3>
-                    <h3 className="text-xl">
-                      {p.title.split(" ").slice(0, 2).join(" ")}
-                    </h3>
-                    <div className="flex justify-between py-2">
-                      <p className="text-slate-600 text-base">{p.price} EGP</p>
-                      <p className="text-slate-600 text-base">
-                        {" "}
-                        <i className="fas fa-star text-yellow-300"></i>{" "}
-                        {p.ratingsAverage}{" "}
-                      </p>
-                    </div>
-                  </div>
-                </Link>
-                <button
-                  className="btn opacity-0 group-hover:opacity-100 "
-                  onClick={() => addtoCart(p.id)}
-                >
-                  {loading && currId == p.id ? (
-                    <i className="fas fa-spinner fa-spin "></i>
+                  {favItems?.includes(p.id) ? (
+                    <i className="fa-solid fa-heart text-xl text-[#0AAD0A] dark:text-[#0AAD0A]"></i>
                   ) : (
-                    <p>
-                      add to cart <i className="fa-solid fa-cart-plus "></i>
-                    </p>
+                    <i className="fa-regular fa-heart text-xl dark:text-white"></i>
                   )}
-                </button>
+                </div>
+                <img
+                  src={p.imageCover}
+                  className="w-full rounded-lg"
+                  alt=""
+                />
+              </div>
+
+              <h3 className="text-[#0AAD0A] dark:text-[#0AAD0A] text-2xl">
+                {p.category.name}
+              </h3>
+              <h3 className="text-xl dark:text-white">
+                {p.title.split(" ").slice(0, 2).join(" ")}
+              </h3>
+              <div className="flex justify-between py-2">
+                <p className="text-slate-600 dark:text-gray-400 text-base  dark:text-white">
+                  {p.price} EGP
+                </p>
+                <p className="text-slate-600 dark:text-gray-400 text-base  dark:text-white">
+                  <i className="fas fa-star text-yellow-300"></i>{" "}
+                  {p.ratingsAverage}
+                </p>
               </div>
             </div>
-          );
-        })}
+          </Link>
+          <button
+            className="btn opacity-0 group-hover:opacity-100 dark:bg-[#0AAD0A] dark:text-white"
+            onClick={() => addtoCart(p.id)}
+          >
+            {loading && currId == p.id ? (
+              <i className="fas fa-spinner fa-spin"></i>
+            ) : (
+              <p>
+                add to cart <i className="fa-solid fa-cart-plus"></i>
+              </p>
+            )}
+          </button>
+        </div>
       </div>
-      <div className="flex  items-center justify-center " id="pg">
-        <Pagination
-          currentPage={currentPage}
-          totalPages={2}
-          onPageChange={onPageChange}
-          previousLabel="<<"
-          nextLabel=">>"
-        />
-      </div>
+    );
+  })}
+</div>
+<div className="flex items-center justify-center" id="pg">
+  <Pagination
+    currentPage={currentPage}
+    totalPages={2}
+    onPageChange={onPageChange}
+    previousLabel="<<"
+    nextLabel=">>"
+  />
+</div>
+
     </>
   );
 }

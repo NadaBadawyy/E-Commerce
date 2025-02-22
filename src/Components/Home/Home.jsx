@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div>
       <MainSlider/>
-      <h3 className='text-center md:text-left my-5 text-3xl'>Shop Popular Categories</h3>
+      <h3 className='text-center md:text-left my-5 md:text-3xl text-2xl'>Shop Popular Categories</h3>
       <CategorySlider/>
       <Products/>
 

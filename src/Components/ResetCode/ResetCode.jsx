@@ -28,7 +28,7 @@ export default function ResetCode() {
       });
   }
   let validationSchema = yup.object().shape({
-    resetCode: yup.string().required("resetcode is required "),
+    resetCode: yup.string().required("resetcode is required"),
   });
   let formik = useFormik({
     initialValues: {
@@ -41,12 +41,12 @@ export default function ResetCode() {
     <>
       <div className="my-24"> 
         <form onSubmit={formik.handleSubmit} class=" max-w-xl m-auto">
-          <div className="p-16 bg-[#F8F9FA] rounded-2xl shadow-2xl">
+          <div className="p-16 bg-[#F8F9FA] dark:bg-[#1F2937] rounded-2xl shadow-2xl">
           <h2 className="text-center text-[#0AAD0A] font-mono font-bold text-2xl my-3">Account Recovery</h2>
             <div class="mb-5">
               <label
                 for="resetCode"
-                className="block mb-2 text-lg  font-medium text-left text-[#0AAD0A]"
+                className="block mb-2 text-lg  font-medium text-left text-[#0AAD0A] dark:text-white"
               >
                 Your Code:
               </label>
@@ -77,7 +77,7 @@ export default function ResetCode() {
               </svg>
               <span class="sr-only">Info</span>
               <div>
-                <span class="font-medium">{formik.errors.email}</span>
+                <span class="font-medium ">{formik.errors.resetCode}</span>
               </div>
             </div>
           )}
@@ -88,7 +88,7 @@ export default function ResetCode() {
               type="submit"
               class="text-white bg-[#0AAD0A]  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md w-full  px-5 py-2.5 text-center "
             >
-              {loading ? <i className="fas fa-spinner fa-spin"></i> : <><span>Send Code<i class="fa-solid fa-paper-plane"></i></span></>}
+              {loading ? <i className="fas fa-spinner fa-spin"></i> : <><span>Send Code <i class="fa-solid fa-paper-plane"></i></span></>}
             </button>
           </div>
         </form>

@@ -30,7 +30,7 @@ export default function Categories() {
                       className="w-full h-[300px] object-cover rounded-se-lg  rounded-ss-lg"
                       alt=""
                     />
-                    <p className="text-lg w-full p-2 bg-gray-200 rounded-es-lg  rounded-ee-lg border ">
+                    <p className="text-lg w-full p-2 bg-gray-200 rounded-es-lg dark:bg-[#030119] dark:text-white rounded-ee-lg border ">
                       {cat.name}
                     </p>
                     </div>

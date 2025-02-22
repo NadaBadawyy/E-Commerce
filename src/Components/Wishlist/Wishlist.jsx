@@ -55,7 +55,7 @@ export default function Wishlist() {
       {(favItems )? (
         favItems.length > 0 ? (
           <div className="p-5 my-10 font-mono">
-            <h2 className="my-10 text-3xl font-mono text-left">My Wishlist</h2>
+            <h2 className="my-10 text-3xl font-mono text-left dark:text-white">My Wishlist</h2>
             {favItems?.map((p, i) => {
               return (
                 <div
@@ -67,7 +67,7 @@ export default function Wishlist() {
                       <img src={p.imageCover} className="w-full" alt="" />
                     </div>
                     <div className="p-3 text-left">
-                      <h5 className="text-xl mb-2">{p.category.name}</h5>
+                      <h5 className="text-xl mb-2 dark:text-white">{p.category.name}</h5>
                       <p className="text-lg text-[#0AAD0A] ">{p.price} EGP</p>
                     </div>
                   </div>

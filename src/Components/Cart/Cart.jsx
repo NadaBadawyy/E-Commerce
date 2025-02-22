@@ -79,7 +79,7 @@ export default function Cart() {
               {mdSreen ? (
                 <>
                   <div className="p-5 my-10 font-mono">
-                    <h2 className="my-10 text-3xl font-mono text-left">
+                    <h2 className="my-10 text-3xl font-mono text-left dark:text-white">
                       My Cart
                     </h2>
                     {cartDetails?.products.map((p, i) => {
@@ -97,7 +97,7 @@ export default function Cart() {
                               />
                             </div>
                             <div className="p-3 text-left">
-                              <h5 className="text-xl mb-2">
+                              <h5 className="text-xl mb-2 dark:text-white">
                                 {p.product.title
                                   .split(" ")
                                   .slice(0, 2)
@@ -106,7 +106,7 @@ export default function Cart() {
                               <p className="text-lg text-[#0AAD0A] ">
                                 {p.price * p.count} EGP
                               </p>
-                              <div className="flex items-center justify-start my-5">
+                              <div className="flex items-center justify-start my-5 dark:text-white">
                                 <button
                                   className="inline-flex items-center justify-center p-1 me-3 text-sm font-medium h-6 w-6 text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
                                   type="button"
@@ -194,7 +194,7 @@ export default function Cart() {
                   </h2>
                   <div className="relative overflow-x-auto shadow-md sm:rounded-lg ">
                     <table className="w-full text-lg text-left rtl:text-right text-gray-500 dark:text-gray-400 py-10">
-                      <thead className="text-lg text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                      <thead className="text-lg text-center text-gray-700 uppercase bg-gray-50 dark:bg-[#203046] dark:text-white ">
                         <tr className="">
                           <th scope="col" className="px-16 py-3">
                             <span className="sr-only">Image</span>
@@ -218,7 +218,7 @@ export default function Cart() {
                           return (
                             <tr
                               key={p.product.id}
-                              className="text-center bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
+                              className="text-center bg-white border-b dark:bg-gray-800 dark:border-[#030119] border-gray-200 "
                             >
                               <td className="p-5">
                                 <img
@@ -234,7 +234,7 @@ export default function Cart() {
                                   .join(" ")}
                               </td>
                               <td className="px-6 py-4 ">
-                                <div className="flex items-center justify-center">
+                                <div className="flex items-center justify-center dark:text-white">
                                   <button
                                     className="inline-flex items-center justify-center p-1 me-3 text-sm font-medium h-6 w-6 text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
                                     type="button"

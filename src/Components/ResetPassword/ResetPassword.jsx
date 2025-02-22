@@ -43,14 +43,14 @@ console.log(values);
       <div className="my-24">
         
         <form onSubmit={formik.handleSubmit} class=" max-w-xl m-auto">
-          <div className="p-16 bg-[#F8F9FA] rounded-2xl shadow-2xl">
+          <div className="p-16 bg-[#F8F9FA] dark:bg-[#1F2937] rounded-2xl shadow-2xl">
           <h2 className="text-center text-[#0AAD0A] font-mono font-bold text-2xl my-3">Account Recovery</h2>
             <div class="mb-5">
               <label
                 for="email"
-                className="block mb-2 text-lg  font-medium  text-left "
+                className="block mb-2 text-lg  font-medium  text-left dark:text-white "
               >
-                Your email:
+                Your Email:
               </label>
               <input
                 type="email"
@@ -87,7 +87,7 @@ console.log(values);
             <div class="mb-5">
               <label
                 for="newPassword"
-                className="block mb-2 text-lg  font-medium text-left "
+                className="block mb-2 text-lg  font-medium text-left dark:text-white "
               >
                 Your newPassword:
               </label>

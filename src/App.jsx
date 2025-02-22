@@ -34,6 +34,12 @@ import BrandDetails from "./Components/BrandDetails/BrandDetails";
 import ForgetPassword from "./Components/ForgetPassword/ForgetPassword";
 import ResetCode from "./Components/ResetCode/ResetCode";
 import ResetPassword from "./Components/ResetPassword/ResetPassword";
+import Profile from "./Components/Profile/Profile";
+import ChangeProfile from "./Components/ChangeProfile/ChangeProfile";
+import ChangePassword from "./Components/ChangePassword/ChangePassword";
+import TokenContextProvider from "./Context/TokenContext";
+import DarkSideProvider from "./Context/DarkSide";
+import OrderDetails from "./Components/OrderDetails/OrderDetails";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -124,6 +130,38 @@ function App() {
             </ProtectedRoute>
           ),
         },
+        {
+          path: "profile/change-profile",
+          element: (
+            <ProtectedRoute>
+              <ChangeProfile />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "profile/change-password",
+          element: (
+            <ProtectedRoute>
+              <ChangePassword />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "profile",
+          element: (
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "allorders/:id",
+          element: (
+            <ProtectedRoute>
+              <OrderDetails />
+            </ProtectedRoute>
+          ),
+        },
         { path: "login", element: <Login /> },
         { path: "register", element: <Register /> },
         { path: "forget-password", element: <ForgetPassword /> },
@@ -156,8 +194,14 @@ function App() {
           <CartContextProvider>
             <OrderContextProvider>
               <WishlistContextProvider>
-              <RouterProvider router={routes} />
-              <ToastContainer/>
+              <TokenContextProvider>
+                <DarkSideProvider>
+                <RouterProvider router={routes} />
+                <ToastContainer/>
+
+                </DarkSideProvider>
+                
+              </TokenContextProvider>
               </WishlistContextProvider>
               
               {/* <ReactQueryDevtools /> */}
