@@ -6,10 +6,14 @@ import { data } from 'react-router-dom'
 
 export default function useProducts() {
       const [currentPage, setCurrentPage] = useState(1);
-      
+      const [npages, setnpages] = useState(null)
       const onPageChange = (page) => setCurrentPage(page);
-    function getProducts(){
-        return axios.get(`https://ecommerce.routemisr.com/api/v1/products?page=${currentPage}`)
+    async function getProducts(){
+        let res= await axios.get(`https://ecommerce.routemisr.com/api/v1/products?page=${currentPage}`);
+        setnpages(res.data.metadata.numberOfPages)
+        console.log(res.data);
+        
+        return res
     }
     async function getSpecificProducts(cat){
         let x= await axios.get(`https://ecommerce.routemisr.com/api/v1/products`)
@@ -31,8 +35,9 @@ export default function useProducts() {
         queryFn:getProducts,
         staleTime:7000,
         select:(data)=>{
+
             return data.data.data
         }
     })
-  return {productIfo,currentPage,onPageChange,getSpecificProducts, getSpecificBrandProducts}
+  return {productIfo,currentPage,onPageChange,getSpecificProducts, getSpecificBrandProducts,npages,setCurrentPage}
 }
