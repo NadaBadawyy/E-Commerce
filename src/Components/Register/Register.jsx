@@ -19,7 +19,7 @@ export default function Register() {
       .then((res) => {
         setloading(false);
         // localStorage.setItem("Token", res.data.token);
-        setLoginData(res.data.token);
+        // setLoginData(res.data.token);
         toast.success('You Regitered Successfully',{ position: "bottom-left" })
         navigate("/login");
       })
