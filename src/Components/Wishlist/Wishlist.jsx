@@ -4,6 +4,7 @@ import { WishlistContext } from "../../Context/WishlistContext";
 import img from "../../assets/slider-image-3.jpeg";
 import { CartContext } from "../../Context/CartContext";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 export default function Wishlist() {
   const [favItems, setfavItems] = useState(null);
   const [loading, setloading] = useState(null);
@@ -52,6 +53,9 @@ export default function Wishlist() {
   }, []);
   return (
     <>
+    <Helmet>
+        <title>WishList</title>
+      </Helmet>
       {(favItems )? (
         favItems.length > 0 ? (
           <div className="p-5 my-10 font-mono">

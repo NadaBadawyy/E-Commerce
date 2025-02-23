@@ -6,6 +6,7 @@ import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../Context/UserContext";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 export default function Register() {
   let { LoginData, setLoginData } = useContext(UserContext);
   let navigate = useNavigate();
@@ -62,6 +63,9 @@ export default function Register() {
   });
   return (
     <>
+    <Helmet>
+        <title>Register</title>
+      </Helmet>
     <div className="flex justify-center items-center">
       <div className="w-full">
 

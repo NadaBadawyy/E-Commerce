@@ -6,6 +6,7 @@ import { OrderContext } from "../../Context/OrderContext";
 import { CartContext } from "../../Context/CartContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 export default function Checkout() {
 const [payment, setpayment] = useState(null)
   let navigate =useNavigate()
@@ -62,7 +63,9 @@ const [payment, setpayment] = useState(null)
   }
   return (
     <>
-    
+    <Helmet>
+        <title>Checkout</title>
+      </Helmet>
       <form className="max-w-xl m-auto  p-10 md:p-0 mt-24 mb-5 py-5" onSubmit={formik.handleSubmit}>
       <div className="relative z-0 w-full my-10 group">
           <input

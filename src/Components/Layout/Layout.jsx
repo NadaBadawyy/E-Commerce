@@ -16,6 +16,7 @@ export default function Layout() {
   },[])
   return (
     <>
+    <div className="selection:bg-[#0AAD0A] selection:text-white">
     <div >
     <Nav/>
       <div className="p-1 md:p-8 py-5 my-5 m-auto text-center font-mono min-h-[85vh]">
@@ -23,6 +24,9 @@ export default function Layout() {
       </div>
     </div>
       <Footer/>
+
+    </div>
+
      
     </>
   );

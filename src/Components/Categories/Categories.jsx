@@ -3,6 +3,8 @@ import style from "./Categories.module.css";
 import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import SearchInput from "../SearchInput/SearchInput";
+import { Helmet } from "react-helmet";
 export default function Categories() {
   const [categories, setcategories] = useState(null);
   async function getCategories() {
@@ -17,6 +19,10 @@ export default function Categories() {
   }, []);
   return (
     <>
+    <Helmet>
+        <title>Categories</title>
+      </Helmet>
+    <SearchInput/>
       {categories ? (
         <div className="row my-10 ">
           {categories?.map((cat) => {

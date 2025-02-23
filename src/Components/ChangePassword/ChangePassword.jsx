@@ -4,6 +4,7 @@ import * as yup from "yup";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 export default function ChangePassword() {
   let navigate = useNavigate();
   const [loading, setloading] = useState(null);
@@ -57,6 +58,9 @@ export default function ChangePassword() {
   });
   return (
     <>
+    <Helmet>
+        <title>Update Password</title>
+      </Helmet>
       <div className="my-24">
         <form onSubmit={formik.handleSubmit} class=" max-w-xl m-auto">
           <div className="p-16 bg-[#F8F9FA] dark:bg-[#1F2937] rounded-2xl shadow-2xl">

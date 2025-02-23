@@ -120,7 +120,7 @@ export default function ProductDetails() {
   return (
     <>
       <Helmet>
-        <title>{product?.title}</title>
+        <title>{product?.title.split(" ").slice(0, 2).join(" ")}</title>
       </Helmet>
       {product || products ? (
         <>

@@ -63,12 +63,13 @@ export default function CategorySlider() {
   },[])
   return (
     <>
+    
     <Slider {...settings}>
     {categories? categories.map((cat,i)=>{
        return <div key={i} className="">
         <div className="m-auto ">
         <img src={cat.image}  className=' object-cover  m-auto h-[200px] w-[200px] rounded-lg' alt="" />
-        <h4 className='text-center my-5'>{cat.name}</h4>
+        <h4 className='text-center my-5 dark:text-white'>{cat.name}</h4>
         </div>
           
         </div>

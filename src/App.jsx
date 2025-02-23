@@ -40,6 +40,8 @@ import ChangePassword from "./Components/ChangePassword/ChangePassword";
 import TokenContextProvider from "./Context/TokenContext";
 import DarkSideProvider from "./Context/DarkSide";
 import OrderDetails from "./Components/OrderDetails/OrderDetails";
+import SearchResults from "./Components/SearchResults/SearchResults";
+import InvertedRoutes from "./Components/InvertedRoutes/InvertedRoutes";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -162,8 +164,16 @@ function App() {
             </ProtectedRoute>
           ),
         },
-        { path: "login", element: <Login /> },
-        { path: "register", element: <Register /> },
+        {
+          path: "products/:search",
+          element: (
+            <ProtectedRoute>
+              <SearchResults />
+            </ProtectedRoute>
+          ),
+        },
+        { path: "login", element:<InvertedRoutes><Login /></InvertedRoutes>  },
+        { path: "register", element: <InvertedRoutes> <Register /></InvertedRoutes> },
         { path: "forget-password", element: <ForgetPassword /> },
         { path: "forget-password/reset-code", element: <ResetCode /> },
         { path: "forget-password/reset-password", element: <ResetPassword /> },

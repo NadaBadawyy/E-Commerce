@@ -5,6 +5,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { TokenContex } from "../../Context/TokenContext";
+import { Helmet } from "react-helmet";
 export default function ChangeProfile() {
   let navigate = useNavigate();
   let {setdecodedToken}=useContext(TokenContex)
@@ -57,6 +58,9 @@ export default function ChangeProfile() {
   });
   return (
     <>
+    <Helmet>
+        <title>Update Profile</title>
+      </Helmet>
       <div className="my-24">
         <form onSubmit={formik.handleSubmit} class=" max-w-xl m-auto">
           <div className="p-16 bg-[#F8F9FA] dark:bg-[#1F2937] rounded-2xl shadow-2xl">

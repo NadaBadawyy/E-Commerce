@@ -3,6 +3,7 @@ import style from "./AllOrders.module.css";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 export default function AllOrders() {
   const token = localStorage.getItem('Token');
 const decoded = jwtDecode(token);
@@ -19,6 +20,9 @@ const decoded = jwtDecode(token);
   }, []);
   return (
     <>
+    <Helmet>
+        <title>Orders</title>
+      </Helmet>
       <div className="my-24">
         {orders ? (
           orders.length > 0 ? (

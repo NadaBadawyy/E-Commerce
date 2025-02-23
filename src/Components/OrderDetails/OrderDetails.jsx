@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import style from "./OrderDetails.module.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 export default function OrderDetails() {
   const [Details, setDetails] = useState(null);
   const [items, setitems] = useState(null);
@@ -20,10 +21,12 @@ export default function OrderDetails() {
   }, []);
   return (
     <>
+      <Helmet>
+        <title>{id}</title>
+      </Helmet>
       {Details ? (
         <>
-          {Details.length > 0 ? (
-            <>
+         <>
               <div className="p-5">
                 <div className="p-5 rounded-2xl shadow-2xl bg-[#F8F9FA] dark:bg-[#1F2937] dark:text-white m-auto mt-24">
                   <div className="flex flex-col md:flex-row justify-around  flex-wrap gap-y-7 mx-auto sm:items-center text-left">
@@ -140,13 +143,6 @@ export default function OrderDetails() {
                 </div>
               </div>
             </>
-          ) : (
-            <>
-              <p className="text-center text-3xl capitalize m-auto my-10 md:mt-24 dark:text-white">
-                The Order has been Delivered <i class="fa-solid fa-face-smile-beam"> </i>
-              </p>
-            </>
-          )}
         </>
       ) : (
         <>

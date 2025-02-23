@@ -4,6 +4,7 @@ import * as yup from "yup";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 export default function ResetPassword() {
   let navigate = useNavigate();
   const [loading, setloading] = useState(null);
@@ -40,6 +41,9 @@ console.log(values);
   });
   return (
     <>
+    <Helmet>
+        <title>Reset Code</title>
+      </Helmet>
       <div className="my-24">
         
         <form onSubmit={formik.handleSubmit} class=" max-w-xl m-auto">

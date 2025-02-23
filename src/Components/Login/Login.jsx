@@ -6,6 +6,7 @@ import * as yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../Context/UserContext";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 export default function Login() {
   let {LoginData,setLoginData}=useContext(UserContext)
   let navigate = useNavigate();
@@ -55,6 +56,9 @@ export default function Login() {
   });
   return (
     <>
+    <Helmet>
+        <title>Login</title>
+      </Helmet>
     <div className="flex justify-center items-center mt-24 md:p-0 p-10">
    <div className="w-full">
     <h2 className="text-3xl text-center font-bold font-mono mb-10 dark:text-white">Login Now</h2>

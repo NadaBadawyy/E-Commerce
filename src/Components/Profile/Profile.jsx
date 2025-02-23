@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { TokenContex } from '../../Context/TokenContext';
 import { UserContext } from '../../Context/UserContext';
 import Login from '../Login/Login';
+import { Helmet } from 'react-helmet';
 export default function Profile() {
   const [userData, setuserData] = useState(null)
     let {decodedToken}=useContext(TokenContex)
@@ -20,6 +21,9 @@ export default function Profile() {
   },[LoginData])
   return (
     <>
+    <Helmet>
+        <title>{userData?.name}</title>
+      </Helmet>
       <div className="my-24">
         
         <form class=" max-w-xl m-auto">

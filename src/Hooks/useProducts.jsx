@@ -11,7 +11,7 @@ export default function useProducts() {
     async function getProducts(){
         let res= await axios.get(`https://ecommerce.routemisr.com/api/v1/products?page=${currentPage}`);
         setnpages(res.data.metadata.numberOfPages)
-        console.log(res.data);
+
         
         return res
     }

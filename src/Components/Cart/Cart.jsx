@@ -3,6 +3,7 @@ import style from "./Cart.module.css";
 import { CartContext } from "../../Context/CartContext";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 export default function Cart() {
   const [cartDetails, setcartDetails] = useState(null);
   const [loading, setloading] = useState(false);
@@ -66,6 +67,9 @@ export default function Cart() {
   }, []);
   return (
     <>
+    <Helmet>
+        <title>Cart</title>
+      </Helmet>
       {cartDetails == null ? (
         <div class="spinner">
           <div class="bounce1"></div>

@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import { CartContext } from "../../Context/CartContext";
 import { WishlistContext } from "../../Context/WishlistContext";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 export default function BrandDetails() {
   const [products, setproducts] = useState(null);
   let { getSpecificBrandProducts } = useProducts();
@@ -84,6 +85,9 @@ export default function BrandDetails() {
   }, []);
   return (
     <>
+    <Helmet>
+        <title>{brand}</title>
+      </Helmet>
       {products ? (
         <>
           <h2 className="capitalize text-2xl mt-10 text-left font-bold font-mono">
