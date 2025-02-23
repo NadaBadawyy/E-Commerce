@@ -18,10 +18,10 @@ export default function Register() {
       .post(`https://ecommerce.routemisr.com/api/v1/auth/signup`, values)
       .then((res) => {
         setloading(false);
-        localStorage.setItem("Token", res.data.token);
+        // localStorage.setItem("Token", res.data.token);
         setLoginData(res.data.token);
         toast.success('You Regitered Successfully',{ position: "bottom-left" })
-        navigate("/sssssss");
+        navigate("/login");
       })
       .catch((res) => {
         setloading(false);
