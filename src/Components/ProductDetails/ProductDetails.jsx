@@ -183,7 +183,7 @@ export default function ProductDetails() {
               </div>
             </div>
           )}
-          <h2 className="text-center md:text-left  text-3xl mt-16 capitalize">
+          <h2 className="text-center md:text-left  text-3xl mt-16 capitalize dark:text-white">
             related products
           </h2>
 
