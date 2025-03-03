@@ -87,7 +87,7 @@ export default function CategoryDetails() {
       </Helmet>
       {products ? (
         <>
-          <h2 className="capitalize text-2xl mt-10 text-left font-bold font-mono">
+          <h2 className="capitalize text-2xl mt-10 text-left font-bold font-mono dark:text-white">
             {cat}:
           </h2>
 

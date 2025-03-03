@@ -107,7 +107,7 @@ export default function Wishlist() {
             })}
           </div>
         ) : (
-          <div className="flex justify-center items-center md:h-fit h-screen">
+          <div className="flex justify-center items-center md:h-fit h-screen dark:text-white">
             <p className="text-center text-3xl capitalize m-auto  md:my-28">
             no favorite items added yet
             <i className="fa-regular fa-face-frown"></i>

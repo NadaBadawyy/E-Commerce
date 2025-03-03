@@ -194,7 +194,7 @@ export default function ProductDetails() {
                   className="w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 text-left"
                   key={p.id}
                 >
-                  <div className="hover:border-2 hover:shadow-md border-[#0AAD0A] dark:border-green-500 rounded-lg group p-5 dark:bg-[#030119] dark:hover:shadow-lg">
+                  <div className="hover:border-2 hover:shadow-md border-[#0AAD0A] dark:border-[#0AAD0A] rounded-lg group p-5 dark:bg-[#030119] dark:hover:shadow-lg">
                     <Link
                       to={`/productdetails/${p.id}/${p.category.name}`}
                       onClick={(e) => {
@@ -229,7 +229,7 @@ export default function ProductDetails() {
                           />
                         </div>
 
-                        <h3 className="text-[#0AAD0A] dark:text-green-400 text-2xl">
+                        <h3 className="text-[#0AAD0A] dark:text-[#0AAD0A] text-2xl">
                           {p.category.name}
                         </h3>
                         <h3 className="text-xl dark:text-white">
@@ -247,7 +247,7 @@ export default function ProductDetails() {
                       </div>
                     </Link>
                     <button
-                      className="btn opacity-0 group-hover:opacity-100 dark:bg-green-500 dark:text-white"
+                      className="btn opacity-0 group-hover:opacity-100 dark:bg-[#0AAD0A] dark:text-white"
                       onClick={() => addtoCart(p.id)}
                     >
                       {loading && currId == p.id ? (
