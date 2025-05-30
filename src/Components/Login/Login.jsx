@@ -149,9 +149,16 @@ export default function Login() {
             </div>
           )}
         </div>
-        <Link to={'/forget-password'}>
-        <h5 className="text-xl my-3 text-[#0AAD0A] text-left underline ">Forget Password</h5>
+        <div className="flex justify-between items-center">
+          <Link to={'/register'}>
+        <h5 className="md:text-xl my-3 text-[#0AAD0A] text-left underline ">Register Now</h5>
         </Link>
+        <Link to={'/forget-password'}>
+        <h5 className="md:text-xl my-3 text-[#0AAD0A] text-left underline ">Forget Password</h5>
+        </Link>
+
+        </div>
+        
        
         <button
           type="submit"
