@@ -1,6 +1,5 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
-import useDarkSide from "../../Hooks/useDarkSide";
 import { DarkSide } from "../../Context/DarkSide";
 
 
